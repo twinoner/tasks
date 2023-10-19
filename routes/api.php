@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProductController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -22,4 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'sort'], function () {
     Route::post('/taskPriority/{id}', TaskController::class.'@sortTaskPriority');
+});
+
+Route::group(['prefix' => 'products'], function () {
+    // Route::post('/', ProductController::class.'@index');
 });

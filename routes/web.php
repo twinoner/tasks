@@ -15,13 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProductController;
 
 use App\Models\Task;
 
 Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TaskController::class);
+Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     $tasks = Task::all();
     return view('tasks.index', compact('tasks'));
+});
+
+Route::group(['prefix' => 'products'], function () {
+    // Route::post('/', ProductController::class.'@store');
 });
